@@ -1,45 +1,48 @@
 cube(`Comments2`, {
   sql: `SELECT * FROM security."Comments2"`,
-  
+
   joins: {
-    PullRequests: {
+    PullRequests2: {
       relationship: `hasOne`,
-      sql: `${Comments2}.id = ${PullRequests2}.user_id`,
+      sql: `${Comments2}.pr_id = ${PullRequests2}.id`,
     },
   },
-  
+
   measures: {
     count: {
       type: `count`,
-      drillMembers: [id, createdAt]
-    }
+      drillMembers: [id, createdAt],
+    },
   },
-  
+
   dimensions: {
     type: {
       sql: `type`,
-      type: `string`
+      type: `string`,
     },
-    
+
     author: {
       sql: `author`,
-      type: `string`
+      type: `string`,
     },
-    
+
     topic: {
       sql: `topic`,
-      type: `string`
+      type: `string`,
     },
-    
+
     id: {
       sql: `id`,
       type: `number`,
-      primaryKey: true
+      primaryKey: true,
     },
-    
+    pr_id: {
+      sql: `id`,
+      type: `number`,
+    },
     createdAt: {
       sql: `created_at`,
-      type: `string`
-    }
-  }
+      type: `string`,
+    },
+  },
 });

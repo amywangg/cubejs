@@ -1,32 +1,38 @@
 cube(`PullRequests2`, {
   sql: `SELECT * FROM security."PullRequests2"`,
-  
+
   joins: {
-    
+    Owner2: {
+      relationship: `hasOne`,
+      sql: `${PullRequests2}.owner_id = ${Owner2}.id`,
+    },
   },
-  
+
   measures: {
     count: {
       type: `count`,
-      drillMembers: [id]
+      drillMembers: [id],
     },
-    
-    number: {
-      sql: `number`,
-      type: `sum`
-    }
   },
-  
+
   dimensions: {
     id: {
       sql: `id`,
       type: `number`,
-      primaryKey: true
+      primaryKey: true,
     },
-    
+
     author: {
       sql: `author`,
-      type: `string`
-    }
-  }
+      type: `string`,
+    },
+    number: {
+      sql: `number`,
+      type: `number`,
+    },
+    owner_id: {
+      sql: `id`,
+      type: `number`,
+    },
+  },
 });

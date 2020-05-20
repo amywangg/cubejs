@@ -1,5 +1,4 @@
 const CubejsServer = require('@cubejs-backend/server');
-
 const server = new CubejsServer();
 
 server.listen().then(({ version, port }) => {
