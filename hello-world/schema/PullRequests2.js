@@ -1,5 +1,5 @@
-cube(`PullRequests`, {
-  sql: `SELECT * FROM cubejs."PullRequests"`,
+cube(`PullRequests2`, {
+  sql: `SELECT * FROM security."PullRequests2"`,
   
   joins: {
     

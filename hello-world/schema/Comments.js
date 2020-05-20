@@ -1,46 +1,45 @@
 cube(`Comments`, {
   sql: `SELECT * FROM cubejs."Comments"`,
-  
+
   joins: {
-    PullRequests:{
+    PullRequests: {
       relationship: `hasOne`,
-      sql: `${Comments}.pr_id = ${PullRequests}.id`
-    }
-    
+      sql: `${Comments}.id = ${PullRequests}.user_id`,
+    },
   },
-  
+
   measures: {
     count: {
       type: `count`,
-      drillMembers: [id, createdAt]
-    }
+      drillMembers: [id, createdAt],
+    },
   },
-  
+
   dimensions: {
     topic: {
       sql: `topic`,
-      type: `string`
+      type: `string`,
     },
-    
+
     id: {
       sql: `id`,
       type: `number`,
-      primaryKey: true
+      primaryKey: true,
     },
-    
+
     createdAt: {
       sql: `created_at`,
-      type: `time`
+      type: `string`,
     },
-    
+
     author: {
       sql: `author`,
-      type: `string`
+      type: `string`,
     },
-    
+
     type: {
       sql: `type`,
-      type: `string`
-    }
-  }
+      type: `string`,
+    },
+  },
 });

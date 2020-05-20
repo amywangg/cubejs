@@ -1,5 +1,5 @@
-cube(`PullRequests`, {
-  sql: `SELECT * FROM cubejs."PullRequests"`,
+cube(`Owner2`, {
+  sql: `SELECT * FROM security."Owner2"`,
   
   joins: {
     
@@ -9,11 +9,6 @@ cube(`PullRequests`, {
     count: {
       type: `count`,
       drillMembers: [id]
-    },
-    
-    number: {
-      sql: `number`,
-      type: `sum`
     }
   },
   
@@ -24,8 +19,8 @@ cube(`PullRequests`, {
       primaryKey: true
     },
     
-    author: {
-      sql: `author`,
+    owner: {
+      sql: `owner`,
       type: `string`
     }
   }
