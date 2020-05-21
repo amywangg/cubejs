@@ -1,5 +1,8 @@
 cube(`PullRequests2`, {
-  sql: `SELECT * FROM security."PullRequests2"`,
+  // USER_CONTEXT refers to the "u" aka query paramters and can be used to filter columns
+  sql: `SELECT * FROM security."PullRequests2" WHERE ${USER_CONTEXT.id.filter(
+    "owner_id"
+  )}`,
 
   joins: {
     Owner2: {
@@ -31,7 +34,7 @@ cube(`PullRequests2`, {
       type: `number`,
     },
     owner_id: {
-      sql: `id`,
+      sql: `owner_id`,
       type: `number`,
     },
   },
